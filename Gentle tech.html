@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gentle Tech</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+transition:0.4s;
+overflow-x:hidden;
+}
+
+body.light-mode{
+background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
+color:#111;
+}
+
+/* PARTICLES CANVAS */
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* HEADER */
+header{
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:45px;
+height:45px;
+border-radius:50%;
+}
+
+header h1{
+font-size:1.5rem;
+}
+
+/* TOGGLE BUTTON */
+.toggle-btn{
+background:white;
+color:black;
+border:none;
+padding:8px 15px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:90px 20px;
+background:linear-gradient(135deg,#8e2de2,#4a00e0);
+}
+
+.hero button{
+padding:15px 30px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff512f,#dd2476);
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero button:hover{
+transform:scale(1.1);
+}
+
+/* SERVICES */
+section{
+padding:60px 20px;
+text-align:center;
+}
+
+.services{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:20px;
+width:250px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:linear-gradient(45deg,#00dbde,#fc00ff);
+}
+
+/* CONTACT */
+.contact{
+background:linear-gradient(135deg,#ff6a00,#ee0979);
+padding:70px 20px;
+}
+
+.contact-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.contact-buttons a{
+text-decoration:none;
+padding:15px 25px;
+border-radius:30px;
+font-weight:600;
+color:white;
+transition:0.3s;
+}
+
+.gmail{
+background:linear-gradient(45deg,#d44638,#ff6f61);
+}
+
+.whatsapp{
+background:linear-gradient(45deg,#25D366,#128C7E);
+}
+
+.contact-buttons a:hover{
+transform:scale(1.1);
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:20px;
+background:black;
+font-size:0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+<div class="logo">
+<img src="logo.png" alt="Gentle Tech Logo">
+<h1>Gentle Tech</h1>
+</div>
+
+<button class="toggle-btn" onclick="toggleMode()">🌙/☀</button>
+</header>
+
+<section class="hero">
+<h2>Innovative Digital Solutions</h2>
+<p>We build, repair, and design modern tech solutions with style and excellence.</p>
+<button onclick="document.getElementById('contact').scrollIntoView()">Get Started 🚀</button>
+</section>
+
+<section>
+<h2>Our Services</h2>
+<br>
+<div class="services">
+<div class="card">
+<h3>💻 Web Design</h3>
+<p>Modern, responsive and stylish websites.</p>
+</div>
+
+<div class="card">
+<h3>📱 Phone Repair</h3>
+<p>Fast and reliable device repairs.</p>
+</div>
+
+<div class="card">
+<h3>🎓 Tech Training</h3>
+<p>Learn digital skills and coding.</p>
+</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2>Contact Us Instantly</h2>
+
+<div class="contact-buttons">
+
+<a class="gmail"
+href="https://mail.google.com/mail/?view=cm&fs=1&to=ibitoyetosin2012@gmail.com"
+target="_blank">
+📧 Contact via Gmail
+</a>
+
+<a class="whatsapp"
+href="https://wa.me/2348154259412?text=Hello%20Gentle%20Tech,%20I%20visited%20your%20website%20and%20I%20need%20your%20service."
+target="_blank">
+💬 Chat on WhatsApp
+</a>
+
+</div>
+</section>
+
+<footer>
+© 2026 Gentle Tech | Designed by ult!m@t€™ 🚀
+</footer>
+
+<script>
+function toggleMode(){
+document.body.classList.toggle("light-mode");
+}
+
+/* SIMPLE PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+radius:Math.random()*3,
+dx:(Math.random()-0.5),
+dy:(Math.random()-0.5)
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+p.x+=p.dx;
+p.y+=p.dy;
+});
+requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
